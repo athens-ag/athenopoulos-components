@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Gains Carousel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.11.4/core.min.css">
+    <style>
+        .carousel-container {
+            width: 450px;
+            margin: 20px auto;
+            position: relative;
+            overflow: visible;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            flex: 0 0 450px;
+            display: flex;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 0px;
+            background-color: #CEBBA1;
+            border: 3px solid #333;
+            align-items: stretch; /* Make items stretch to card height */
+            box-shadow: 2px 2px 4px #000000;
+        }
+
+        .logo-container {
+            flex: 0 0 33%; /* Take up 33% of the card width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: hidden; /* Clip any part of the image that overflows */
+        }
+
+        .card img {
+            width: 100%; /* Make the image try to fill the container */
+            height: 100%; /* Make the image try to fill the container */
+            transition: transform 0.3s ease;
+            display: block;
+            object-fit: cover; /* Fill the container, potentially cropping */
+        }
+
+        .card-content {
+            flex: 1; /* Take up the remaining space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .card-content h3 {
+            margin: 5px 0;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .card-content p {
+            margin: 5px 0;
+            font-size: 14px;
+            font-family: "Times New Roman", Times, serif;
+            color: #333;
+        }
+
+        .card-content .highlight {
+            font-weight: bold;
+            font-family: "Times New Roman", Times, serif;
+            color: #2e7d32;
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .nav-arrow.left {
+            left: 0px;
+        }
+
+        .nav-arrow.right {
+            right: -85px;
+        }
+
+        .axon-logo {
+            width: 100%; /* Adjust if needed to fit container */
+            height: 100%; /* Adjust if needed to fit container */
+            object-fit: contain; /* Or cover depending on desired look for this specific logo */
+        }
+
+        .card.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .card.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="card visible">
+                <div class="logo-container">
+                    <img src="https://logos-world.net/wp-content/uploads/2020/04/Apple-Logo.png" alt="Apple Logo">
+                </div>
+                <div class="card-content">
+                    <h3>Picked 3/16/2017 ($22)</h3>
+                    <h3>Price Sold ($240) = <span class="highlight">990.909% Profit</span></h3>
+                    <p>Tech equity investment strategy</p>
+                </div>
+            </div>
+
+            <div class="card hidden">
+                <div class="logo-container">
+                    <img src="https://cdn.prod.website-files.com/63bffc98a9ee7d56338f1525/63c59854a0d6e7ef9f3a0016_axon-symbol.svg" alt="AXON logo" class="axon-logo">
+                </div>
+                <div class="card-content">
+                    <h3>Picked 1/16/2017 ($24.40)</h3>
+                    <h3>Price Sold ($607.17) = <span class="highlight">2388.4% Profit</span></h3>
+                    <p>Tech Equity Investment Strategy</p>
+                </div>
+            </div>
+
+            <div class="card hidden">
+                <div class="logo-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/2/20/MercadoLibre.svg" alt="MELI logo">
+                </div>
+                <div class="card-content">
+                    <h3>Picked 1/02/2017 ($158.91)</h3>
+                    <h3>Price Sold ($1922.19) = <span class="highlight">1110.06% Profit</span></h3>
+                    <p>Retail Sales Investment Strategy</p>
+                </div>
+            </div>
+
+            <div class="card hidden">
+                <div class="logo-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/6/63/Tsmc.svg" alt="TSM logo">
+                </div>
+                <div class="card-content">
+                    <h3>Picked 1/1/2017 ($30.91)</h3>
+                    <h3>Price Sold ($209.32) = <span class="highlight">577.19% Profit</span></h3>
+                    <p>Tech Equity Investment Strategy</p>
+                </div>
+            </div>
+
+            <div class="card hidden">
+                <div class="logo-container">
+                    <img src="https://www.nvidia.com/en-us/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container/nv_image.coreimg.png/1703060329053/nvidia-logo-vert.png" alt="Nvidia Logo">
+                </div>
+                <div class="card-content">
+                    <h3>Picked 2/7/2017 ($1.27)</h3>
+                    <h3>Price Sold ($140) = <span class="highlight">11396.1% Profit</span></h3>
+                    <p>Maximizing returns in emerging tech</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-arrow left" onclick="moveCarousel(-1)">&#10094;</div>
+        <div class="nav-arrow right" onclick="moveCarousel(1)">&#10095;</div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const carousel = document.getElementById('carousel');
+        const cards = document.querySelectorAll('.card');
+        const cardWidth = cards[0].offsetWidth;
+
+        function moveCarousel(direction) {
+            cards[currentSlide].classList.remove('visible');
+            cards[currentSlide].classList.add('hidden');
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = cards.length - 1;
+            } else if (currentSlide >= cards.length) {
+                currentSlide = 0;
+            }
+
+            cards[currentSlide].classList.remove('hidden');
+            cards[currentSlide].classList.add('visible');
+
+            carousel.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+        }
+    </script>
+</body>
+</html>

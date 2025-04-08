@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material UI Card with Apple Logo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.11.4/core.min.css">
+  <style>
+    .card {
+      display: flex;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 0px;  
+      max-width: 450px; 
+      margin: 20px auto;
+      background-color: white;
+      border: 3px solid #333; 
+      align-items: center; 
+    }
+    .card img {
+      height: 75px;
+      width: 120px;
+      transition: transform 0.3s ease; 
+      margin-left: -10px;  
+      margin-right: -10px; 
+      margin-bottom: 12px; 
+      display: block;
+      margin-top: 10px; 
+    }
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      margin-left: 5px; 
+      padding: 4px 0; 
+    }
+    .card-content h3 {
+      margin: 0px 0; 
+      font-size: 17px; 
+      font-weight: bold;
+    }
+    .card-content p {
+      margin: 4px 0; 
+      font-size: 14px;  
+      color: #333;
+    }
+    .card-content .highlight {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Centered Apple Logo -->
+    <div class="logo-column">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/AXON_Company_logo.svg" alt="AXON logo">
+    </div>
+    <div class="card-content">
+      <h3>Picked 1/02/2017 ($158.91)</h3>
+      <h3>Price Sold ($1922.19) = <span class="highlight">2388.4% Profit</span></h3>
+      <p>Tech equity investment strategy</p>
+    </div>
+  </div>
+
+</body>
+</html>
+

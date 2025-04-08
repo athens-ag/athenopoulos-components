@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<body>
+
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+const xValues = ["AUM Fees", "Performance Fees", "Your Gains", "Your Initial Investments"];
+const yValues = [0, 38064, 311600, 37540];
+const originalTotal = 366000;
+const barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "pie",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Our Gains & Fees"
+    },
+    rotation: 320, // Start diagonally (adjust as needed)
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          let currentValue = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+          let percentage = (currentValue / originalTotal) * 100;
+          return data.labels[tooltipItem.index] + ": " + percentage.toFixed(2) + "%";
+        }
+      }
+    },
+    hover: {
+      mode: 'nearest',
+      intersect: true,
+      animationDuration: 400
+    },
+    plugins: {
+      datalabels: {
+        formatter: (value, ctx) => {
+          let percentage = (value / originalTotal * 100).toFixed(2) + "%";
+          return percentage;
+        },
+        color: '#fff',
+        font: {
+          weight: 'bold'
+        }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
