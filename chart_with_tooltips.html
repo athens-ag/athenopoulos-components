@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-e473663472bc80b085c03170a348bb93"}, "mark": {"type": "area", "color": "green", "opacity": 0.3}, "encoding": {"tooltip": [{"field": "lower", "format": "$,.2f", "title": "S&P500", "type": "quantitative"}, {"field": "upper", "format": "$,.2f", "title": "Athenopoulos", "type": "quantitative"}, {"field": "Year", "type": "ordinal"}], "x": {"field": "Year", "type": "ordinal"}, "y": {"field": "lower", "title": "Portfolio Value", "type": "quantitative"}, "y2": {"field": "upper"}}, "name": "view_1"}, {"data": {"name": "data-a76caa8a490804cc87cc827ebe80bf04"}, "mark": {"type": "line", "point": true}, "encoding": {"color": {"field": "Firm", "type": "nominal"}, "tooltip": [{"field": "Year", "type": "ordinal"}, {"field": "Firm", "type": "nominal"}, {"field": "Portfolio Value", "format": "$,.2f", "type": "quantitative"}], "x": {"field": "Year", "type": "ordinal"}, "y": {"axis": {"tickCount": 5}, "field": "Portfolio Value", "scale": {"domain": [0, 400000]}, "type": "quantitative"}}}], "height": 400, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_1"]}], "title": "Athenopoulos versus the S&P500 (Initial Investment of $10,000)", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-e473663472bc80b085c03170a348bb93": [{"Year": 2015, "upper": 10000.0, "lower": 10000.0}, {"Year": 2016, "upper": 21000.0, "lower": 9927.0}, {"Year": 2017, "upper": 32000.84, "lower": 10876.0}, {"Year": 2018, "upper": 70000.47, "lower": 12729.9}, {"Year": 2019, "upper": 98900.44, "lower": 12984.0}, {"Year": 2020, "upper": 125000.0, "lower": 15680.09}, {"Year": 2021, "upper": 141071.39, "lower": 18221.61}, {"Year": 2022, "upper": 180000.13, "lower": 23106.4}, {"Year": 2023, "upper": 238000.58, "lower": 18620.42}, {"Year": 2024, "upper": 300000.73, "lower": 23124.0}, {"Year": 2025, "upper": 366000.71, "lower": 28509.0}], "data-a76caa8a490804cc87cc827ebe80bf04": [{"Year": 2015, "Firm": "Athenopoulos", "Portfolio Value": 10000.0}, {"Year": 2016, "Firm": "Athenopoulos", "Portfolio Value": 21000.0}, {"Year": 2017, "Firm": "Athenopoulos", "Portfolio Value": 32000.84}, {"Year": 2018, "Firm": "Athenopoulos", "Portfolio Value": 70000.47}, {"Year": 2019, "Firm": "Athenopoulos", "Portfolio Value": 98900.44}, {"Year": 2020, "Firm": "Athenopoulos", "Portfolio Value": 125000.0}, {"Year": 2021, "Firm": "Athenopoulos", "Portfolio Value": 141071.39}, {"Year": 2022, "Firm": "Athenopoulos", "Portfolio Value": 180000.13}, {"Year": 2023, "Firm": "Athenopoulos", "Portfolio Value": 238000.58}, {"Year": 2024, "Firm": "Athenopoulos", "Portfolio Value": 300000.73}, {"Year": 2025, "Firm": "Athenopoulos", "Portfolio Value": 366000.71}, {"Year": 2015, "Firm": "S&P500", "Portfolio Value": 10000.0}, {"Year": 2016, "Firm": "S&P500", "Portfolio Value": 9927.0}, {"Year": 2017, "Firm": "S&P500", "Portfolio Value": 10876.0}, {"Year": 2018, "Firm": "S&P500", "Portfolio Value": 12729.9}, {"Year": 2019, "Firm": "S&P500", "Portfolio Value": 12984.0}, {"Year": 2020, "Firm": "S&P500", "Portfolio Value": 15680.09}, {"Year": 2021, "Firm": "S&P500", "Portfolio Value": 18221.61}, {"Year": 2022, "Firm": "S&P500", "Portfolio Value": 23106.4}, {"Year": 2023, "Firm": "S&P500", "Portfolio Value": 18620.42}, {"Year": 2024, "Firm": "S&P500", "Portfolio Value": 23124.0}, {"Year": 2025, "Firm": "S&P500", "Portfolio Value": 28509.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-f2009a7d03ea78802547a43dd52c6026"}, "mark": {"type": "line", "point": true}, "encoding": {"color": {"field": "Firm", "type": "nominal"}, "tooltip": [{"field": "Year", "type": "quantitative"}, {"field": "Firm", "type": "nominal"}, {"field": "Ending Value", "format": "$,.2f", "type": "quantitative"}], "x": {"field": "Year", "type": "ordinal"}, "y": {"axis": {"tickCount": 2}, "field": "Ending Value", "scale": {"domain": [0, 60000], "nice": false}, "type": "quantitative"}}, "params": [{"name": "param_2", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Investment Growth Over 10 Years (Bear Market - -5% Annual Return)", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-f2009a7d03ea78802547a43dd52c6026": [{"Year": 1, "Firm": "Athenopoulos", "Ending Value": 10000.0}, {"Year": 2, "Firm": "Athenopoulos", "Ending Value": 9450.0}, {"Year": 3, "Firm": "Athenopoulos", "Ending Value": 8890.25}, {"Year": 4, "Firm": "Athenopoulos", "Ending Value": 8310.74}, {"Year": 5, "Firm": "Athenopoulos", "Ending Value": 7711.95}, {"Year": 6, "Firm": "Athenopoulos", "Ending Value": 7094.75}, {"Year": 7, "Firm": "Athenopoulos", "Ending Value": 6459.99}, {"Year": 8, "Firm": "Athenopoulos", "Ending Value": 5808.74}, {"Year": 9, "Firm": "Athenopoulos", "Ending Value": 5142.06}, {"Year": 10, "Firm": "Athenopoulos", "Ending Value": 4461.16}, {"Year": 1, "Firm": "Competition", "Ending Value": 10000.0}, {"Year": 2, "Firm": "Competition", "Ending Value": 9300.0}, {"Year": 3, "Firm": "Competition", "Ending Value": 8634.0}, {"Year": 4, "Firm": "Competition", "Ending Value": 8009.62}, {"Year": 5, "Firm": "Competition", "Ending Value": 7425.95}, {"Year": 6, "Firm": "Competition", "Ending Value": 6881.93}, {"Year": 7, "Firm": "Competition", "Ending Value": 6376.49}, {"Year": 8, "Firm": "Competition", "Ending Value": 5908.56}, {"Year": 9, "Firm": "Competition", "Ending Value": 5477.96}, {"Year": 10, "Firm": "Competition", "Ending Value": 5083.4}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
